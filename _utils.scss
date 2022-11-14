@@ -1,0 +1,18 @@
+$background: #262727;
+$selected: #f0d3c9;
+$primary: #665957;
+$error: #bd4141;
+$text-color: #fff;
+$font-fam: "Roboto Mono","Vazirmatn";
+$extra-color: #883434;
+$sub-color: #665957;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@function rem($pixels, $context: 16) {
+    @return (math.div($pixels, $context)) * 1rem;
+}

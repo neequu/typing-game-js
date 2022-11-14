@@ -1,0 +1,191 @@
+@use "sass:math";
+@import 'utils';
+@import "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap";
+
+body {
+    background-color: $background;
+    color: $primary;
+    font-size: rem(32);
+    font-family: $font-fam;
+    display: grid;
+    padding: 0 rem(400);
+    grid-template-rows: 450px 400px 50px;
+    min-width: 600px;
+    opacity: 1 !important;
+}
+// header (logo)
+.header {
+    color: $text-color;
+    position: relative;
+    padding: rem(50) 0;
+    max-height: 40%;
+}
+// words counter
+.word-count {
+    color: rgb(0 0 0 / 0.3);
+    font-size: rem(180);
+    opacity: 0;
+    z-index: 10;   
+    transition: opacity 110ms linear;
+    text-align: center;
+}
+// main element = cursor + content
+.main {
+    line-height: rem(50);
+    height: rem(50) * 3;
+    overflow: hidden;
+
+    &:focus {
+        outline: none;
+    }
+}
+// words content
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: rem(14);
+    user-select: none;
+    position: relative;
+}
+// cursor
+.cursor {
+    width: 3px;
+    height: rem(37);
+    background-color: $selected;
+    top: 7px;
+    left: 0;
+    border-radius: rem(6);
+    animation: blink 1000ms infinite; 
+    // position: fixed;
+    // top: 457px;
+    // left: 400px;
+    position: absolute;
+    top: 4px;
+    left: 0;
+
+    &.active {
+        position: fixed;
+        animation: none;
+        transition: all 100ms linear;
+    }
+}
+
+// buttons
+.button {
+    border: none;
+    outline: none;
+    background:  transparent;
+    color: $primary;
+    cursor: pointer;
+    font-family: $font-fam;
+    transition: color 130ms linear;
+    font-size: 1.4rem;
+
+    &:hover {
+        color: $text-color;
+    }
+}
+
+.button-new-game {
+    padding: 1rem 1rem;
+    font-size: rem(36);
+}
+
+// reuslt 
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: rem(-500);
+
+    .result-num {
+        color: $selected;
+        font-size: rem(80);
+        text-align: end;
+        position: relative;
+    }
+    #unit {
+        margin-left: rem(10);
+        margin-right: rem(40);
+    }
+}
+
+// button containers
+.new-game-container {
+    text-align: center;
+    display: grid;
+    place-items: center;
+    margin-top: -300px;
+    opacity: 1;
+    transition: all 300ms linear;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(93deg, rgba(38,39,39,.5) 5%, rgba(102,89,87,.2) 50%, rgba(38,39,39,.5) 95%);
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
+    padding: rem(10) rem(8);
+    margin-top: rem(50);
+    border-radius: 20px;
+    transition: all 170ms ease-out;
+    opacity: 0;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+// selectors
+.selected {
+    color: $selected;
+}
+.correct {
+    color: $text-color;
+}
+.incorrect {
+    color: $error;
+}
+.extra {
+    color: $extra-color;
+}
+.standard {
+    color: $primary;
+}
+.hidden {
+    display: none !important;
+}
+.fade {
+    opacity:.3;
+}
+.show {
+    display: block;
+}
+.word-count.show {
+    opacity: 1;
+}
+
+// animation
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+// media
+@media (max-width: 1300px) {
+    body {
+        padding: 0 rem(50);
+    }
+    
+}
